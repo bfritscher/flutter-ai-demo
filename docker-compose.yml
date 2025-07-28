@@ -1,0 +1,19 @@
+services:
+  typesense:
+    image: typesense/typesense:27.0.rc29
+    container_name: test-typesense
+    restart: on-failure
+    volumes:
+      - ./typesense-data-dir:/data
+    ports:
+      - 8108:8108
+    command: '--data-dir /data --api-key=xyz --enable-cors --cors-domains=http://localhost:8188 --enable-search-analytics=true --analytics-dir=/data/analytics --analytics-flush-interval=60'
+
+  typesense_dashboard:
+    image: ghcr.io/bfritscher/typesense-dashboard:latest
+    container_name: test-typesense_dashboard
+    restart: on-failure
+    volumes:
+      - ./typesense-dashboard/config.json:/srv/config.json
+    ports:
+      - 8188:80
