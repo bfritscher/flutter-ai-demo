@@ -10,7 +10,7 @@ class GeminiService {
     // Initialize the Gemini Developer API backend service
     // Create a GenerativeModel instance with a model that supports your use case
     _model = FirebaseAI.googleAI().generativeModel(
-      model: 'gemini-2.5-flash-lite',
+      model: 'gemini-3.5-flash-lite',
     );
     _chatSession = _model.startChat();
   }

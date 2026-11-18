@@ -16,7 +16,9 @@ class _ChatScreenState extends State<ChatScreen> {
   void initState() {
     super.initState();
     _provider = FirebaseProvider(
-      model: FirebaseAI.googleAI().generativeModel(model: 'gemini-2.5-flash-lite'),
+      model: FirebaseAI.googleAI().generativeModel(
+        model: 'gemini-3.5-flash-lite',
+      ),
     );
   }
 

@@ -13,6 +13,14 @@ subprojects {
     project.layout.buildDirectory.value(newSubprojectBuildDir)
 }
 subprojects {
+    // camera_android_camerax 0.6.x does not declare this transitive dependency, which javac now requires.
+    if (project.name == "camera_android_camerax") {
+        afterEvaluate {
+            dependencies.add("implementation", "androidx.concurrent:concurrent-futures:1.2.0")
+        }
+    }
+}
+subprojects {
     project.evaluationDependsOn(":app")
 }
 
